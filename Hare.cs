@@ -12,21 +12,20 @@ public class Hare : MonoBehaviour
 
         source = GetComponent <AudioSource>();
         collide = GetComponent<Collider2D>();   
-        //collide.isTrigger = false;
+        collide.isTrigger = false;
     }
 
     void Update (){
-        if (carrotOn){
-            collide.isTrigger = false;
-        }else{
-            collide.isTrigger = true;
-        }
+        //if (carrotOn){
+            //collide.isTrigger = false;
+        //}else{
+            //collide.isTrigger = true;
+        //}
 
     }
     void OnCollisionEnter2D(Collision2D other){
-        if(carrotOn = true && other.gameObject.tag == "Player"){
+        if((carrotOn = true && other.gameObject.tag == "Player")){
             GameObject.Find("GameManager").SendMessage("SubtractCarrot");
-            //GameObject.Find("Hare").BroadcastMessage("Dance");
             source.mute = false;
             collide.isTrigger = true;
         }

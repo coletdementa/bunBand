@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public float totalCarrot = 4;
     public GameObject titleScreen;
     public GameObject player;
+    public GameObject hares;
+    public GameObject boar;
 
 
     void Start (){
@@ -22,7 +24,6 @@ public class GameManager : MonoBehaviour
     public void StartGame(){
         titleScreen.SetActive (false);
         player.SetActive (true);
-        print ("alo");
     }
 
     void Update (){
@@ -47,15 +48,17 @@ public class GameManager : MonoBehaviour
     }
 
     void NoCount(){
-        GameObject.Find("Hare").BroadcastMessage("NoCarrots");
+        player.SendMessage("NotCarryingCarrots");
+        hares.BroadcastMessage("NoCarrots");
     }
 
     void SomeCount(){
-        GameObject.Find("Hare").BroadcastMessage("SomeCarrots");
+        player.SendMessage("CarryingCarrots");
+        hares.BroadcastMessage("SomeCarrots");
     }
     void NoMoreCarrots(){
-        GameObject.Find("Boar").SendMessage("Clap");
-        GameObject.Find("Hare").BroadcastMessage("Dance");
+        boar.SendMessage("Clap");
+        hares.BroadcastMessage("Dance");
     }
     void Restart (){
         Scene scene = SceneManager.GetActiveScene();

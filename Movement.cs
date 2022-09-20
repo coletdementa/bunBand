@@ -33,4 +33,11 @@ public class Movement : MonoBehaviour
     void FixedUpdate(){
         rb.velocity = new Vector2(dirX, dirY);
     }
+
+    void NotCarryingCarrots (){
+        gameObject.tag = "NotPlayer";
+    }
+    void CarryingCarrots (){
+        gameObject.tag = "Player";
+    }
 }

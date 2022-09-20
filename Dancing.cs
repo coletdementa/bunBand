@@ -6,8 +6,9 @@ public class Dancing : MonoBehaviour
 {
     private SpriteRenderer sp;
     private Collider2D collide;
-    public float number;
-    public float seconds;
+
+    public float danceTempo;
+    public float time;
     public bool dance;
 
     void Start()
@@ -20,16 +21,11 @@ public class Dancing : MonoBehaviour
     void Update()
     {
         if (dance){
-            number = number + seconds;
+            time += Time.deltaTime;
         }
-        if (number > 5){
-            sp.flipX = true;
-        }else{
-            sp.flipX = false;
-        }
-        if (number > 10 || number < 0){
-            print ("ok");
-            seconds = seconds * -1;
+        if (time >= danceTempo){
+            sp.flipX = !sp.flipX;
+            time = 0;
         }
     }
     void Dance (){
